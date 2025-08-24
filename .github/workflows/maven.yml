@@ -3,7 +3,7 @@ name: Deploy to AKS with Helm
 on:
   push:
     branches:
-      - feature/init
+      - main
 
 jobs:
   build-and-deploy:
