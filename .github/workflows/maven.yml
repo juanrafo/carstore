@@ -46,4 +46,4 @@ jobs:
         helm upgrade --install carstore ./helm \
           --set image.repository=${{ secrets.ACR_NAME }}.azurecr.io/carstore \
           --set image.tag=1.1.0 \
-          --namespace default
+          --namespace dev
