@@ -42,8 +42,7 @@ jobs:
       uses: azure/setup-helm@v3
 
     - name: Deploy with Helm (install or upgrade)
-      run: |
-        helm repo update
+      run: |        
         if helm status carstore --namespace dev > /dev/null 2>&1; then
           echo "Release existe, haciendo upgrade..."
           helm upgrade --install carstore ./helm \
