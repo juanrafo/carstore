@@ -2,6 +2,8 @@ package com.azure.demo.carstore.controller;
 
 
 import com.azure.demo.carstore.dto.CarDTO;
+import com.azure.demo.carstore.dto.VehicleDTO;
+import com.azure.demo.carstore.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +14,21 @@ import java.util.List;
 @RequestMapping("/cars")
 public class CarStoreController {
 
+    private final CarService carService;
     private final List<CarDTO> cars = new ArrayList<>();
+
+    public CarStoreController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping
     public List<CarDTO> listCars() {
         return cars;
+    }
+
+    @GetMapping("/rx")
+    public List<VehicleDTO> listCarsRx() {
+        return carService.getVehicleList();
     }
 
     @PostMapping
