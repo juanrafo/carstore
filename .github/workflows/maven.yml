@@ -46,7 +46,7 @@ jobs:
         helm repo update
         if helm status carstore --namespace dev > /dev/null 2>&1; then
           echo "Release existe, haciendo upgrade..."
-          helm upgrade carstore ./helm \
+          helm upgrade --install carstore ./helm \
             --set image.repository=${{ secrets.ACR_NAME }}.azurecr.io/carstore \
             --set image.tag=1.1.0 \
             --namespace dev
